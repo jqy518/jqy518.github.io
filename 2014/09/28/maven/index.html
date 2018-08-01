@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="LWWL4HEbcj" />
+  <title>springToolSuite--Maven项目init中遇到问题处理方法备忘 | 蒋青云的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在项目开发中，springTool导入maven项目后初始化遇到各种奇葩的报错。问题根源出在依赖上。归结为下面两点：">
+<meta name="keywords" content="maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springToolSuite--Maven项目init中遇到问题处理方法备忘">
+<meta property="og:url" content="http://jekion.com/2014/09/28/maven/index.html">
+<meta property="og:site_name" content="蒋青云的个人博客">
+<meta property="og:description" content="在项目开发中，springTool导入maven项目后初始化遇到各种奇葩的报错。问题根源出在依赖上。归结为下面两点：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jekion.com/img/1.jpg">
+<meta property="og:image" content="http://jekion.com/img/2.jpg">
+<meta property="og:image" content="http://jekion.com/img/3.jpg">
+<meta property="og:updated_time" content="2016-11-22T05:51:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springToolSuite--Maven项目init中遇到问题处理方法备忘">
+<meta name="twitter:description" content="在项目开发中，springTool导入maven项目后初始化遇到各种奇葩的报错。问题根源出在依赖上。归结为下面两点：">
+<meta name="twitter:image" content="http://jekion.com/img/1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="蒋青云的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+  <script>AV.init({appId:"mFiUDFTHikNnfQgaHhOWTa35-gzGzoHsz", appKey:"sjcFKgIyk3JuugA4nejkdqy7"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jekion</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/G20/" style="font-size: 10px;">G20</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/audioContext/" style="font-size: 10px;">audioContext</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/chosen/" style="font-size: 10px;">chosen</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/express/" style="font-size: 12px;">express</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/jquery/" style="font-size: 14px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongoDB/" style="font-size: 10px;">mongoDB</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/node/" style="font-size: 16px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/typeahead/" style="font-size: 10px;">typeahead</a> <a href="/tags/vuejs/" style="font-size: 18px;">vuejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/随笔/" style="font-size: 12px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端攻城狮，但不限于前端，对java,php，数据库也有涉猎；注重代码设计。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">jekion</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="/img/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">jekion</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/28/maven/" class="article-date">
+  	<time datetime="2014-09-28T05:00:07.000Z" itemprop="datePublished">2014-09-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springToolSuite--Maven项目init中遇到问题处理方法备忘
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
+	</div>
+
+        
+
+        <div class="statistics_box statistics_t">
+  <ul class="article-tag-list">
+    <li class="article-tag-list-item">
+      <span id="view_count">0次</span>
+    </li>
+  </ul>
+</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在项目开发中，springTool导入maven项目后初始化遇到各种奇葩的报错。问题根源出在依赖上。归结为下面两点：<br><a id="more"></a></p>
+<h4 id="外部jar包依赖出现问题："><a href="#外部jar包依赖出现问题：" class="headerlink" title="外部jar包依赖出现问题："></a>外部jar包依赖出现问题：</h4><p>原因:未下载下来相关jar；<br>console打印错误信息为：<code>加载/出错.......xxx.jar 未找到</code>；</p>
+<p><strong>验证问题：</strong></p>
+<p>我可以在相关项目下看jar包是否加载：能展开一般是正常加载了的如下图：<br><img src="/img/1.jpg" alt="1.jpg"></p>
+<p>如果不能展开，或都根本就不存在（一般配置好了不会不存在，除非配置文件<code>pom.xm</code>出了问题）；说明外部依赖有问题；</p>
+<p><strong>解决方法：</strong></p>
+<blockquote>
+<p>1，排除<code>pom.xml</code>的问题;<br>  2，在springToolSuite\mvn_repository找到相关依赖jar看是不已经下载(有可能确实存在这个xxx. jar但未下载完；最好的办法直接删除相关jar文件夹)；<br>  3，项目右键–Maven–update Maven dependencies；重新下载。<br>  4，再进行上面的—<code>验证问题</code>；看是否能展开；实在下载不下载，拷备其他同事的的放入相应文件夹。</p>
+</blockquote>
+<h4 id="项目之间的依赖出现问题："><a href="#项目之间的依赖出现问题：" class="headerlink" title="项目之间的依赖出现问题："></a>项目之间的依赖出现问题：</h4><p>  如果项目比较大，一般开发会分模块开发如我公司项目:<br><img src="/img/2.jpg" alt="2.jpg"><br>如果项目之间的依赖出现问题，一般出在项目打包生成的<code>.jar</code>文件上;<br>console打印错误信息一般为class类找不到如：Lcom.xxxx.xxxx.xxx.找不到（前面带了一 <code>L</code>;搞不懂是什么原因）；</p>
+<p><strong>解决办法：</strong></p>
+<p>1，我们可以通过以下步骤查看项目依赖：<code>项目右键–properties</code><br><img src="/img/3.jpg" alt="3.jpg"><br>2，看相关依赖是否完全；不完全：点击–<code>add</code>–<code>project</code>–选择相关被依赖项目<br>3，如果完全；看是否正确（是否是最新）；每个jar都是以版本号结束（如果pom.xml文件里版本号变量出现问题【springTool有时编译检查反应很慢pom.xml有问题却不报错】，这个版本号就不会出现）;</p>
+<p>这种情况多半是相关项目pom.xml出现问题;排除相关问题;再重新<code>maven install</code>一下；再根据第二步加载相关依赖；</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/31/node-inspector调试nodeJS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          node-inspector调试nodeJS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/12/28/nav_animat/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Jquery弹性滑块导航的效果</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="maven" data-title="springToolSuite--Maven项目init中遇到问题处理方法备忘" data-url="http://jekion.com/2014/09/28/maven/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jekion"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 jekion
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.increment("time");
+                    $("#view_count").text(counter.attributes.time+"次");
+                    counter.save(null,{"fetchWhenSave":true});
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+
+$(function(){
+var Counter=AV.Object.extend("jekion_com");
+	if ($('.duoshuo').length == 1){
+		addCount(Counter);
+	}
+});
+
+</script>
+  </div>
+</body>
+</html>

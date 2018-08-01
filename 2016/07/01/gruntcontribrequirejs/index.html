@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="LWWL4HEbcj" />
+  <title>grunt-contrib-requirejs一些配置问题 | 蒋青云的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="grunt中requirejs属性123456789101112requirejs: &amp;#123;   compile:&amp;#123;    options:&amp;#123;      baseUrl: &quot;./src/js/&quot;,      optimize:&quot;none&quot;,//输出文件要不要压缩，要请用“uglify/uglify2”      mainConfigFile: &quot;./src/js/app/">
+<meta name="keywords" content="grunt,requirejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="grunt-contrib-requirejs一些配置问题">
+<meta property="og:url" content="http://jekion.com/2016/07/01/gruntcontribrequirejs/index.html">
+<meta property="og:site_name" content="蒋青云的个人博客">
+<meta property="og:description" content="grunt中requirejs属性123456789101112requirejs: &amp;#123;   compile:&amp;#123;    options:&amp;#123;      baseUrl: &quot;./src/js/&quot;,      optimize:&quot;none&quot;,//输出文件要不要压缩，要请用“uglify/uglify2”      mainConfigFile: &quot;./src/js/app/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-11-03T05:13:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="grunt-contrib-requirejs一些配置问题">
+<meta name="twitter:description" content="grunt中requirejs属性123456789101112requirejs: &amp;#123;   compile:&amp;#123;    options:&amp;#123;      baseUrl: &quot;./src/js/&quot;,      optimize:&quot;none&quot;,//输出文件要不要压缩，要请用“uglify/uglify2”      mainConfigFile: &quot;./src/js/app/">
+  
+    <link rel="alternative" href="/atom.xml" title="蒋青云的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+  <script>AV.init({appId:"mFiUDFTHikNnfQgaHhOWTa35-gzGzoHsz", appKey:"sjcFKgIyk3JuugA4nejkdqy7"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jekion</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/G20/" style="font-size: 10px;">G20</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/audioContext/" style="font-size: 10px;">audioContext</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/chosen/" style="font-size: 10px;">chosen</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/express/" style="font-size: 12px;">express</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/jquery/" style="font-size: 14px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongoDB/" style="font-size: 10px;">mongoDB</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/node/" style="font-size: 16px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/typeahead/" style="font-size: 10px;">typeahead</a> <a href="/tags/vuejs/" style="font-size: 18px;">vuejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/随笔/" style="font-size: 12px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端攻城狮，但不限于前端，对java,php，数据库也有涉猎；注重代码设计。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">jekion</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="/img/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">jekion</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-gruntcontribrequirejs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/gruntcontribrequirejs/" class="article-date">
+  	<time datetime="2016-07-01T14:10:59.000Z" itemprop="datePublished">2016-07-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      grunt-contrib-requirejs一些配置问题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li></ul>
+	</div>
+
+        
+
+        <div class="statistics_box statistics_t">
+  <ul class="article-tag-list">
+    <li class="article-tag-list-item">
+      <span id="view_count">0次</span>
+    </li>
+  </ul>
+</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="grunt中requirejs属性"><a href="#grunt中requirejs属性" class="headerlink" title="grunt中requirejs属性"></a>grunt中requirejs属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">requirejs: &#123; </span><br><span class="line">  compile:&#123;</span><br><span class="line">    options:&#123;</span><br><span class="line">      baseUrl: <span class="string">"./src/js/"</span>,</span><br><span class="line">      optimize:<span class="string">"none"</span>,<span class="comment">//输出文件要不要压缩，要请用“uglify/uglify2”</span></span><br><span class="line">      mainConfigFile: <span class="string">"./src/js/app/main.js"</span>,<span class="comment">//入口文件</span></span><br><span class="line">      name: <span class="string">"./app/main"</span>,<span class="comment">//输出模块（包含相关依赖）（如果有多个输出模块请用modules）</span></span><br><span class="line">      exclude: [<span class="string">"jquery"</span>],<span class="comment">//排除相关依赖模块</span></span><br><span class="line">      out: <span class="string">"./dest/js/main.js"</span>        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;        </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="main-js中配置"><a href="#main-js中配置" class="headerlink" title="main.js中配置"></a>main.js中配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  paths:&#123;</span><br><span class="line">    <span class="string">"jquery"</span>:<span class="string">"../../dest/js/lib/jquery-1.9.1.min"</span>,</span><br><span class="line">    <span class="string">"background"</span>:<span class="string">"./app/background"</span>,</span><br><span class="line">    <span class="string">"player"</span>:<span class="string">"./app/player"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">require</span>([<span class="string">"jquery"</span>,<span class="string">"player"</span>,<span class="string">"background"</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$,player,background</span>)</span>&#123;</span><br><span class="line">  background.init();<span class="comment">//背景初始化。</span></span><br><span class="line">  player.init();<span class="comment">//播放器</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="r-js的部分常用配置"><a href="#r-js的部分常用配置" class="headerlink" title="r.js的部分常用配置"></a>r.js的部分常用配置</h3><p><code>grunt-contrib-requirejs</code>依赖于<code>r.js</code>进行模块的合并压缩等，所以配置项实质为<code>r.js</code>的配置项，r.js的配置项比较多，要完全掌握有点难度，下面列出常用的一些：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseUrl: ”./”</td>
+<td>模块所在默认相对目录。如果baseUrl指定不明确，所有被加载的模块都相对于生成目录。如果appDir被指定，baseUrl将相对于appDir目录。</td>
+</tr>
+<tr>
+<td>appDir: “some/path/”</td>
+<td>（选填）app的顶级目录。如果指定该参数，说明您的所有文件都在这个目录下面（包括baseUrl和dir都以这个为根目录）。如果不指定，则以baseUrl参数为准</td>
+</tr>
+<tr>
+<td>dir: “../some/path”</td>
+<td>输出目录。如果不指定，默认会创建一个build目录，相对于生成文件所在的目录。</td>
+</tr>
+<tr>
+<td>shim: {}</td>
+<td>如果shim配置在requirejs运行过程中被使用的话，需要在这里<code>重复声明</code>，这样才能将依赖模块正确引入。最好是使用<code>mainConfigFile</code>指定配置文件，这样就可以只在一个地方声明。当然，如果mainConfigFile没有声明，shim配置就必须声明。</td>
+</tr>
+<tr>
+<td>optimize: “uglify”</td>
+<td>默认会压缩所有js文件，closure/none</td>
+</tr>
+<tr>
+<td>normalizeDirDefines: “skip”</td>
+<td>2.1.11中：如果dir被声明且不为”none”，并且skipDirOptimize 为false，通常所有的JS文件都会被压缩，这个值自动设置为”all”。为了让JS文件能够在压缩过正确执行，优化器会加一层define()调用并且会插入一个依赖数组。当然，这样会有一点点慢如果有很多文件或者有大文件的时候。所以，设置该参数为”skip”这个过程就不会执行，如果optimize设置为”none”也一样。如果你想手动设置值的话：1）优化后：如果你打算压缩没在modules声明的JS文件，在优化器执行过后，你应该设置这个值为”all”2）优化中：但在动态加载过后，你想做一个会文件优化，但不打算在动态加载这些文件可以设置成”skip”最后：所有生成的文件（无论在不在modules里声明过）自动标准化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="详细的r-js配置点这里"><a href="#详细的r-js配置点这里" class="headerlink" title="详细的r.js配置点这里;"></a><a href="http://www.chenliqiang.cn/node/22" target="_blank" rel="noopener">详细的r.js配置点这里</a>;</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/07/利用hexo搭建github个人博客注意事项/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          利用hexo搭建github个人博客注意事项
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/08/cmd_amd_js/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">让你的代码兼容模块标准</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="gruntcontribrequirejs" data-title="grunt-contrib-requirejs一些配置问题" data-url="http://jekion.com/2016/07/01/gruntcontribrequirejs/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jekion"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 jekion
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.increment("time");
+                    $("#view_count").text(counter.attributes.time+"次");
+                    counter.save(null,{"fetchWhenSave":true});
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+
+$(function(){
+var Counter=AV.Object.extend("jekion_com");
+	if ($('.duoshuo').length == 1){
+		addCount(Counter);
+	}
+});
+
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="LWWL4HEbcj" />
+  <title>style_class绑定---vueJS学习笔记 | 蒋青云的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这个相对没什么难度，多练习加强印像。主要区分属性名与vuejs属性的就行。">
+<meta name="keywords" content="vuejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="style_class绑定---vueJS学习笔记">
+<meta property="og:url" content="http://jekion.com/2016/11/20/vuejs_notes_4/index.html">
+<meta property="og:site_name" content="蒋青云的个人博客">
+<meta property="og:description" content="这个相对没什么难度，多练习加强印像。主要区分属性名与vuejs属性的就行。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-11-21T07:02:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="style_class绑定---vueJS学习笔记">
+<meta name="twitter:description" content="这个相对没什么难度，多练习加强印像。主要区分属性名与vuejs属性的就行。">
+  
+    <link rel="alternative" href="/atom.xml" title="蒋青云的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+  <script>AV.init({appId:"mFiUDFTHikNnfQgaHhOWTa35-gzGzoHsz", appKey:"sjcFKgIyk3JuugA4nejkdqy7"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jekion</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/G20/" style="font-size: 10px;">G20</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/audioContext/" style="font-size: 10px;">audioContext</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/chosen/" style="font-size: 10px;">chosen</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/express/" style="font-size: 12px;">express</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/jquery/" style="font-size: 14px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongoDB/" style="font-size: 10px;">mongoDB</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/node/" style="font-size: 16px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/typeahead/" style="font-size: 10px;">typeahead</a> <a href="/tags/vuejs/" style="font-size: 18px;">vuejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/随笔/" style="font-size: 12px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端攻城狮，但不限于前端，对java,php，数据库也有涉猎；注重代码设计。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">jekion</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="/img/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">jekion</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-vuejs_notes_4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/20/vuejs_notes_4/" class="article-date">
+  	<time datetime="2016-11-20T13:20:38.000Z" itemprop="datePublished">2016-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      style_class绑定---vueJS学习笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
+	</div>
+
+        
+
+        <div class="statistics_box statistics_t">
+  <ul class="article-tag-list">
+    <li class="article-tag-list-item">
+      <span id="view_count">0次</span>
+    </li>
+  </ul>
+</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个相对没什么难度，多练习加强印像。主要区分<code>属性名</code>与<code>vuejs属性</code>的就行。</p>
+<a id="more"></a>
+<p>测试代码贴下：</p>
+<h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-6 col-md-offset-3"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--class为对象‘btn-primary’依赖变量‘primary’--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">:class</span>=<span class="string">"&#123;'btn-primary':primary&#125;"</span> @<span class="attr">click</span>=<span class="string">"setVue('primary',primary)"</span>&gt;</span>DEFAULT<span class="tag">&lt;/<span class="name">button</span>&gt;</span> </span><br><span class="line">          <span class="comment">&lt;!--class为变量‘dangerBtn’--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"dangerBtn"</span> @<span class="attr">mouseover</span>=<span class="string">"cangerD"</span>&gt;</span>DANGER<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--class为计算变量‘computedAttr’--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"computedAttr"</span> &gt;</span>WARNING<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--class为数组--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"['btn','btn-default']"</span> &gt;</span>DEFAULT<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--class为数组加表达式--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"['btn',warning ? 'btn-warning' : '']"</span>&gt;</span>DEFAULT<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--class为数组加对象--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"['btn',&#123;'btn-primary':primary&#125;]"</span> &gt;</span>DEFAULT<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">         </span><br><span class="line">         <span class="comment">&lt;!--组件class赋值--&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--style的CSS 属性名可以用驼峰式（camelCase）或短横分隔命名（kebab-case）--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">:style</span>=<span class="string">"&#123;textAlign:'center'&#125;"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">class-com</span> <span class="attr">:style</span>=<span class="string">"comStyleObj"</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span> <span class="attr">size</span>=<span class="string">"btn-lg"</span>&gt;</span><span class="tag">&lt;/<span class="name">class-com</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> classcom = &#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      buttonsize:<span class="keyword">this</span>.size,</span><br><span class="line">      generatorObj:<span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.generatorObj=<span class="keyword">this</span>.generatorstr();</span><br><span class="line">  &#125;,</span><br><span class="line">  props:[<span class="string">"size"</span>],</span><br><span class="line">  template:<span class="string">"&lt;button @click='changsize' :class='buttonsize'&gt;看我七十二变&lt;/button&gt;"</span>,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changsize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> sizeobj = <span class="keyword">this</span>.generatorObj.next();</span><br><span class="line">      <span class="keyword">if</span>(sizeobj.done)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(sizeobj);</span><br><span class="line">        <span class="keyword">this</span>.generatorObj=<span class="keyword">this</span>.generatorstr();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.buttonsize = sizeobj.value;</span><br><span class="line">    &#125;,</span><br><span class="line">    generatorstr: <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'btn-md'</span>;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'btn-sm'</span>;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'btn-xs'</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'btn-lg'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">"#app"</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    primary:<span class="literal">true</span>,</span><br><span class="line">    dangerBtn:&#123;</span><br><span class="line">      btn:<span class="literal">true</span>,</span><br><span class="line">      <span class="string">'btn-danger'</span>:<span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    warning:<span class="literal">true</span>,</span><br><span class="line">    comStyleObj:&#123;</span><br><span class="line">      marginTop:<span class="string">'20px'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    setVue:<span class="function"><span class="keyword">function</span>(<span class="params">key,currValue</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(currValue)&#123;</span><br><span class="line">        <span class="keyword">this</span>[key]=<span class="literal">false</span>;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>[key]=<span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    cangerD:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.dangerBtn[<span class="string">"btn-danger"</span>]);</span><br><span class="line">      <span class="keyword">this</span>.dangerBtn[<span class="string">"btn-danger"</span>] ? <span class="keyword">this</span>.dangerBtn[<span class="string">"btn-danger"</span>]=<span class="literal">false</span> : <span class="keyword">this</span>.dangerBtn[<span class="string">"btn-danger"</span>] =<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    computedAttr: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        btn:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'btn-warning'</span>:!<span class="keyword">this</span>.primary</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components:&#123;</span><br><span class="line">    <span class="string">'class-com'</span>:classcom</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/jqy518/pen/zoZGOK" target="_blank" rel="noopener">DEMO最终效果</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/23/vuejs_notes_5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          组件之间的通信-vuejs学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/20/vuejs_notes_3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简单的翻页组件实现---vueJS学习笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vuejs_notes_4" data-title="style_class绑定---vueJS学习笔记" data-url="http://jekion.com/2016/11/20/vuejs_notes_4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jekion"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 jekion
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.increment("time");
+                    $("#view_count").text(counter.attributes.time+"次");
+                    counter.save(null,{"fetchWhenSave":true});
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+
+$(function(){
+var Counter=AV.Object.extend("jekion_com");
+	if ($('.duoshuo').length == 1){
+		addCount(Counter);
+	}
+});
+
+</script>
+  </div>
+</body>
+</html>

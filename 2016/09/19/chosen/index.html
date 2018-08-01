@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="LWWL4HEbcj" />
+  <title>给jQuery插件chosen添加本地记忆功能 | 蒋青云的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="需求JQuery chosen插件用过的同学应该不陌生，感觉很不错的一下拉选择插件，项目一直在使用chosen插件，前不久客户想给这个下拉选择框加上记忆功能，希望经常选择的选项排在前面，（尽管chosen本身自带模糊搜索功能）；我的一同事用H5的本地存储实现了这一需求；思路很简单：当触发select的onchange事件时,判断localStorage中是否有指定item没有新建">
+<meta name="keywords" content="jquery,chosen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给jQuery插件chosen添加本地记忆功能">
+<meta property="og:url" content="http://jekion.com/2016/09/19/chosen/index.html">
+<meta property="og:site_name" content="蒋青云的个人博客">
+<meta property="og:description" content="需求JQuery chosen插件用过的同学应该不陌生，感觉很不错的一下拉选择插件，项目一直在使用chosen插件，前不久客户想给这个下拉选择框加上记忆功能，希望经常选择的选项排在前面，（尽管chosen本身自带模糊搜索功能）；我的一同事用H5的本地存储实现了这一需求；思路很简单：当触发select的onchange事件时,判断localStorage中是否有指定item没有新建">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-09-19T06:38:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给jQuery插件chosen添加本地记忆功能">
+<meta name="twitter:description" content="需求JQuery chosen插件用过的同学应该不陌生，感觉很不错的一下拉选择插件，项目一直在使用chosen插件，前不久客户想给这个下拉选择框加上记忆功能，希望经常选择的选项排在前面，（尽管chosen本身自带模糊搜索功能）；我的一同事用H5的本地存储实现了这一需求；思路很简单：当触发select的onchange事件时,判断localStorage中是否有指定item没有新建">
+  
+    <link rel="alternative" href="/atom.xml" title="蒋青云的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+  <script>AV.init({appId:"mFiUDFTHikNnfQgaHhOWTa35-gzGzoHsz", appKey:"sjcFKgIyk3JuugA4nejkdqy7"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jekion</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/G20/" style="font-size: 10px;">G20</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/audioContext/" style="font-size: 10px;">audioContext</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/chosen/" style="font-size: 10px;">chosen</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/express/" style="font-size: 12px;">express</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/jquery/" style="font-size: 14px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongoDB/" style="font-size: 10px;">mongoDB</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/node/" style="font-size: 16px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/typeahead/" style="font-size: 10px;">typeahead</a> <a href="/tags/vuejs/" style="font-size: 18px;">vuejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/随笔/" style="font-size: 12px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端攻城狮，但不限于前端，对java,php，数据库也有涉猎；注重代码设计。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">jekion</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="/img/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">jekion</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-chosen" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/19/chosen/" class="article-date">
+  	<time datetime="2016-09-19T05:00:07.000Z" itemprop="datePublished">2016-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给jQuery插件chosen添加本地记忆功能
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chosen/">chosen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+	</div>
+
+        
+
+        <div class="statistics_box statistics_t">
+  <ul class="article-tag-list">
+    <li class="article-tag-list-item">
+      <span id="view_count">0次</span>
+    </li>
+  </ul>
+</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>JQuery <code>chosen</code>插件用过的同学应该不陌生，感觉很不错的一下拉选择插件，项目一直在使用chosen插件，前不久客户想给这个下拉选择框加上记忆功能，希望经常选择的选项排在前面，（尽管chosen本身自带模糊搜索功能）；我的一同事用H5的本地存储实现了这一需求；思路很简单：当触发select的onchange事件时,判断localStorage中是否有指定item没有新建<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> localstr = <span class="built_in">window</span>.localStorage.getItem(<span class="string">"memoryArr"</span>);</span><br><span class="line"><span class="keyword">if</span>(!localstr)&#123;</span><br><span class="line">  <span class="built_in">window</span>.localStrage.setItem(<span class="string">"memoryArr"</span>,<span class="built_in">JSON</span>.stringify([]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后再把当前项以对象形式：<code>{&#39;value&#39;:&#39;选项的值&#39;,&#39;text&#39;:&#39;选项文本&#39;,&#39;cindex&#39;:&#39;点击次数&#39;}</code>存入数组；如果之前存在该项则改变<code>cindex</code>的值.<br>每次进入页面在初始化chosen之前先取出·‘memoryArr’数组与当前选项数据合并再根据<code>cindex</code>排序后再把数据遍历生成·‘select’标签的options;再初始化chosen。这样就做到常选择的在前面的记忆功能了。<br>但后来客户需求又变了，需要同一页面的几个不同<code>name</code>的chosen都要具有记忆功能;显然上面的代码已经不能应付了；所以索性花了点时间把写成了一个JQuery插件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * chosen记忆功能 memory</span></span><br><span class="line"><span class="comment"> * @date</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  $.fn.extend(&#123;</span><br><span class="line">    memory:<span class="function"><span class="keyword">function</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.localStorage === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      init($(<span class="keyword">this</span>),options);</span><br><span class="line">      <span class="keyword">return</span> $(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;); </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">$this,options</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> optionJsons = [];</span><br><span class="line">      <span class="keyword">var</span> localData = <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">var</span> defaultOtps = &#123;<span class="attr">name</span>:<span class="string">""</span>&#125;;</span><br><span class="line">      (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.extend(defaultOtps,options);</span><br><span class="line">        <span class="keyword">var</span> optionels = $<span class="keyword">this</span>.eq(<span class="number">0</span>).find(<span class="string">"option"</span>);</span><br><span class="line">        optionels.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="keyword">var</span> obj = &#123;<span class="string">"key"</span>:$(<span class="keyword">this</span>).val(),<span class="string">"value"</span>:$(<span class="keyword">this</span>).text()&#125;</span><br><span class="line">          optionJsons.push(obj);</span><br><span class="line">        &#125;);</span><br><span class="line">      </span><br><span class="line">        setOption($<span class="keyword">this</span>,defaultOtps,optionJsons);</span><br><span class="line">        $<span class="keyword">this</span>.on(<span class="string">"change"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          setLocalData(<span class="keyword">this</span>,defaultOtps);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;)();</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setLocalData</span>(<span class="params">_this,defaultOtps</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o=&#123;&#125;;</span><br><span class="line">      o.key = $(_this.selectedOptions).last().val();</span><br><span class="line">      o.value = $(_this.selectedOptions).last().text();</span><br><span class="line">    <span class="keyword">var</span> localstr = <span class="built_in">window</span>.localStorage.getItem(defaultOtps.name);</span><br><span class="line">    <span class="keyword">var</span> localData=[];</span><br><span class="line">    <span class="keyword">if</span>(localstr===<span class="literal">null</span>)&#123;</span><br><span class="line">      o.cindex =<span class="number">1</span>;</span><br><span class="line">      localData.push(o);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      localData =<span class="built_in">JSON</span>.parse(localstr);</span><br><span class="line">      <span class="keyword">var</span> addflag = <span class="literal">false</span>;</span><br><span class="line">      $.each(localData,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.key==o.key)&#123;</span><br><span class="line">          <span class="keyword">this</span>.cindex++;</span><br><span class="line">          addflag=<span class="literal">true</span>;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">if</span>(!addflag)&#123;</span><br><span class="line">        o.cindex =<span class="number">1</span>;</span><br><span class="line">        localData.push(o);</span><br><span class="line">      &#125;   </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">window</span>.localStorage.setItem(defaultOtps.name,<span class="built_in">JSON</span>.stringify(localData));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setOption</span>(<span class="params">$selects,defaultOtps,optionJsons</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> localData = <span class="built_in">window</span>.localStorage.getItem(defaultOtps.name);</span><br><span class="line">    <span class="keyword">if</span>(localData===<span class="literal">null</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> sort_data = sortData(optionJsons,<span class="built_in">JSON</span>.parse(localData));</span><br><span class="line">      $selects.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> selectItem = $(<span class="keyword">this</span>);</span><br><span class="line">        selectItem.find(<span class="string">"option:not(:first)"</span>).remove();</span><br><span class="line">        $.each(sort_data,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          selectItem.append(<span class="string">"&lt;option value='"</span>+<span class="keyword">this</span>.key+<span class="string">"'&gt;"</span>+<span class="keyword">this</span>.value+<span class="string">"&lt;/option&gt;"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">      $selects.trigger(<span class="string">"chosen:updated"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sortData</span>(<span class="params">_src,_sort</span>)</span>&#123;</span><br><span class="line">    $.each(_src, <span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> dataItem = <span class="keyword">this</span>;</span><br><span class="line">      $.each(_sort, <span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> stagingItem = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">if</span> (dataItem.key == stagingItem.key) &#123;</span><br><span class="line">          dataItem.cindex = stagingItem.cindex;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          dataItem.cindex = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    _src.sort(sortNumber);</span><br><span class="line">    <span class="keyword">return</span> _src;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sortNumber</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b.cindex - a.cindex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure></p>
+<p>只需要如下初始化chosen就可以了。<br><code>currRow.find(&quot;.assemblyuselect&quot;).memory({name:&quot;container&quot;}).chosen();</code> name值为localStorage的Item的key值，这样就可以针对不同的select保存不同的排序。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/21/typeahead/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          给bootstrap的typeahead插件添加本地记忆功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/08/bolg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">express+MongoDB开发个人博客知识点总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="chosen" data-title="给jQuery插件chosen添加本地记忆功能" data-url="http://jekion.com/2016/09/19/chosen/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jekion"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 jekion
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.increment("time");
+                    $("#view_count").text(counter.attributes.time+"次");
+                    counter.save(null,{"fetchWhenSave":true});
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+
+$(function(){
+var Counter=AV.Object.extend("jekion_com");
+	if ($('.duoshuo').length == 1){
+		addCount(Counter);
+	}
+});
+
+</script>
+  </div>
+</body>
+</html>
