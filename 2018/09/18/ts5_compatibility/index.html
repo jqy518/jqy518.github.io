@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="baidu-site-verification" content="LWWL4HEbcj" />
+  <title>Typescript笔记05-类型兼容性 | 蒋青云的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="TypeScript里的类型兼容性是基于结构子类型的。 结构类型是一种只使用其成员来描述类型的方式。 它正好与名义（nominal）类型形成对比。（译者注：在基于名义类型的类型系统中，数据类型的兼容性或等价性是通过明确的声明和/或类型的名称来决定的。这与结构性类型系统不同，它是基于类型的组成结构，且不要求明确地声明。） 看下面的例子：">
+<meta name="keywords" content="typescript,ts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typescript笔记05-类型兼容性">
+<meta property="og:url" content="http://jekion.com/2018/09/18/ts5_compatibility/index.html">
+<meta property="og:site_name" content="蒋青云的个人博客">
+<meta property="og:description" content="TypeScript里的类型兼容性是基于结构子类型的。 结构类型是一种只使用其成员来描述类型的方式。 它正好与名义（nominal）类型形成对比。（译者注：在基于名义类型的类型系统中，数据类型的兼容性或等价性是通过明确的声明和/或类型的名称来决定的。这与结构性类型系统不同，它是基于类型的组成结构，且不要求明确地声明。） 看下面的例子：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-09T00:47:39.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Typescript笔记05-类型兼容性">
+<meta name="twitter:description" content="TypeScript里的类型兼容性是基于结构子类型的。 结构类型是一种只使用其成员来描述类型的方式。 它正好与名义（nominal）类型形成对比。（译者注：在基于名义类型的类型系统中，数据类型的兼容性或等价性是通过明确的声明和/或类型的名称来决定的。这与结构性类型系统不同，它是基于类型的组成结构，且不要求明确地声明。） 看下面的例子：">
+  
+    <link rel="alternative" href="/atom.xml" title="蒋青云的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+  <script>AV.init({appId:"mFiUDFTHikNnfQgaHhOWTa35-gzGzoHsz", appKey:"sjcFKgIyk3JuugA4nejkdqy7"});</script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jekion</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/G20/" style="font-size: 10px;">G20</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/audioContext/" style="font-size: 10px;">audioContext</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/chosen/" style="font-size: 10px;">chosen</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/express/" style="font-size: 11.67px;">express</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/grunt/" style="font-size: 10px;">grunt</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 18.33px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongoDB/" style="font-size: 10px;">mongoDB</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supervisor/" style="font-size: 10px;">supervisor</a> <a href="/tags/ts/" style="font-size: 18.33px;">ts</a> <a href="/tags/typeahead/" style="font-size: 10px;">typeahead</a> <a href="/tags/typescript/" style="font-size: 20px;">typescript</a> <a href="/tags/vuejs/" style="font-size: 16.67px;">vuejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/随笔/" style="font-size: 11.67px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">前端攻城狮，但不限于前端，对java,php，数据库也有涉猎；注重代码设计。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">jekion</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="/img/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">jekion</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">比你聪明的家伙却比你更努力，多么可怕！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jqy518/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ts5_compatibility" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/18/ts5_compatibility/" class="article-date">
+  	<time datetime="2018-09-18T10:00:20.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Typescript笔记05-类型兼容性
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ts/">ts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+	</div>
+
+        
+
+        <div class="statistics_box statistics_t">
+  <ul class="article-tag-list">
+    <li class="article-tag-list-item">
+      <span id="view_count">0次</span>
+    </li>
+  </ul>
+</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TypeScript里的类型兼容性是基于<code>结构子类型</code>的。 结构类型是一种只使用其<code>成员</code>来描述类型的方式。 它正好与名义（nominal）类型形成对比。（译者注：在基于名义类型的类型系统中，数据类型的兼容性或等价性是通过明确的声明和/或类型的名称来决定的。这与结构性类型系统不同，它是基于类型的组成结构，且不要求明确地声明。） 看下面的例子：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface ABox &#123;</span><br><span class="line">  name:<span class="built_in">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BBox</span> </span>&#123;</span><br><span class="line">  name:<span class="built_in">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> abox:ABox</span><br><span class="line"><span class="keyword">let</span> bbox = <span class="keyword">new</span> BBox()</span><br><span class="line">abox = bbox; <span class="comment">//赋值成功</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>TypeScript的结构性子类型是根据JavaScript代码的典型写法来设计的。 因为JavaScript里广泛地使用<code>匿名对象</code>，例如<code>函数表达式</code>和<code>对象字面量</code>，所以使用结构类型系统来描述这些类型比使用名义类型系统更好。</p>
+</blockquote>
+<p>TypeScript结构化类型系统的基本规则是，如果x要兼容y，那么y至少具有与x相同的属性,（y如果存在比x多的属性也没有关系）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface ABox &#123;</span><br><span class="line">  name:<span class="built_in">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> abox:ABox</span><br><span class="line"><span class="keyword">let</span> c = &#123;<span class="attr">age</span>:<span class="number">12</span>&#125;</span><br><span class="line">abox = c <span class="comment">//报错，找不到name</span></span><br><span class="line"><span class="keyword">let</span> d = &#123;<span class="attr">age</span>:<span class="number">12</span>,<span class="attr">name</span>:<span class="string">'zhangsan'</span>&#125;</span><br><span class="line">abox = d <span class="comment">//成功</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//检查函数参数时使用相同的规则</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">arg:ABox</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arg.name)</span><br><span class="line">&#125;</span><br><span class="line">getName(&#123;<span class="attr">age</span>:<span class="number">26</span>&#125;) <span class="comment">//error</span></span><br><span class="line">getName(&#123;<span class="attr">age</span>:<span class="number">26</span>,<span class="attr">name</span>:<span class="string">'zhangsan'</span>&#125;) <span class="comment">//success</span></span><br></pre></td></tr></table></figure>
+<h4 id="比较两个函数"><a href="#比较两个函数" class="headerlink" title="比较两个函数"></a>比较两个函数</h4><p>1)比较入参</p>
+<p>要查看x是否能赋值给y，首先看它们的参数列表。 x的每个参数必须能在y里找到对应类型的参数。 注意的是参数的名字相同与否无所谓，只看它们的类型。 这里， x的每个参数在y中都能找到对应的参数，所以允许赋值。</p>
+<blockquote>
+<p>因为：忽略参数在js中很常见。想想<code>forEach</code>回调函数^_^</p>
+</blockquote>
+<p>2）比较返回值</p>
+<p>类型系统强制源函数的返回值类型必须是目标函数返回值类型的<code>子类型</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> funA = <span class="function">(<span class="params">age:<span class="built_in">Number</span></span>)=&gt;</span> &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> funB = <span class="function">(<span class="params">a:<span class="built_in">Number</span></span>) =&gt;</span> <span class="number">0</span></span><br><span class="line">funA = funB <span class="comment">//success</span></span><br></pre></td></tr></table></figure>
+<h4 id="函数参数双向协变"><a href="#函数参数双向协变" class="headerlink" title="函数参数双向协变"></a>函数参数双向协变</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">enum EventType &#123;MouseEvent,KeyEvent&#125;</span><br><span class="line"></span><br><span class="line">interface Event &#123;<span class="attr">timestamp</span>:number&#125;</span><br><span class="line">interface MouseEvent extends Event &#123;</span><br><span class="line">  mx: number</span><br><span class="line">  my: number</span><br><span class="line">&#125;</span><br><span class="line">interface KeyEvent extends Event &#123;</span><br><span class="line">  code:string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">listenEvent</span> (<span class="params">type:EventType,cb:(e:Event</span>)=&gt;<span class="title">void</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//常见操作</span></span><br><span class="line">listenEvent(EventType.MouseEvent,<span class="function"><span class="keyword">function</span>(<span class="params">e:MouseEvent</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.x,e.y)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">listenEvent(EventType.MouseEvent,<span class="function"><span class="keyword">function</span>(<span class="params">e:Event</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log((&lt;MouseEvent&gt;e).x,(&lt;MouseEvent&gt;e).y) //断言为子类MouseEvent</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/02/ts6_advanced/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Typescript笔记06-高级类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/17/ts4_inference/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Typescript笔记04-类型推论</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ts5_compatibility" data-title="Typescript笔记05-类型兼容性" data-url="http://jekion.com/2018/09/18/ts5_compatibility/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jekion"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 jekion
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+        url=$('.article-date').attr('href').trim();
+        title = $('.article-title').text().trim();
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.increment("time");
+                    $("#view_count").text(counter.attributes.time+"次");
+                    counter.save(null,{"fetchWhenSave":true});
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+
+$(function(){
+var Counter=AV.Object.extend("jekion_com");
+	if ($('.duoshuo').length == 1){
+		addCount(Counter);
+	}
+});
+
+</script>
+  </div>
+</body>
+</html>
