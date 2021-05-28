@@ -1,0 +1,60 @@
+.menu-box {
+    width: 50px;
+    height: 50px;
+    background: #FFF;
+    border-radius: .4em;
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.menu-box:hover {
+    background: #eeeeee;
+}
+.menu-btn,
+.menu-btn:before,
+.menu-btn:after {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #555;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.menu-btn {
+    margin: 0 auto;
+    position: relative;
+    top: 22px;
+}
+.menu-btn:before,
+.menu-btn:after {
+    content: '';
+    position: absolute;
+}
+.menu-btn:before {
+    left: -12px;
+}
+.menu-btn:after {
+    left: 12px;
+}
+.menu-box.active .menu-btn,
+.menu-box.active .menu-btn:before,
+.menu-box.active .menu-btn:after {
+    height: 30px;
+    border-radius: 3px;
+}
+.menu-box.active .menu-btn {
+    -webkit-transform: translateY(-11px);
+    -ms-transform: translateY(-11px);
+    transform: translateY(-11px);
+    background: transparent;
+}
+.menu-box.active .menu-btn:before {
+    -webkit-transform: translateX(12px) rotate(225deg);
+    -ms-transform: translateX(12px) rotate(225deg);
+    transform: translateX(12px) rotate(225deg);
+}
+.menu-box.active .menu-btn:after {
+    -webkit-transform: translateX(-12px) rotate(-225deg);
+    -ms-transform: translateX(-12px) rotate(-225deg);
+    transform: translateX(-12px) rotate(-225deg);
+}
