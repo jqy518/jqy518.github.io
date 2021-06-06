@@ -5,6 +5,7 @@
 html,body {
     height: 100%;
     width: 100%;
+   font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
 }
 .index-main {
     width: 100%;
@@ -45,7 +46,7 @@ html,body {
     width: 40%;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #fff;
+    color: #000;
     box-sizing: border-box;
     padding:20px 15px;
     text-align: center;
