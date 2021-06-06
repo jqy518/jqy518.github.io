@@ -1,0 +1,170 @@
+* {
+    padding:0;
+    margin: 0;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+}
+.index-main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    box-sizing: border-box;
+    padding:20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position:center;
+    background-image: url('./images/2.jfif');
+    background-size: cover;
+}
+.title-box {
+    width: 90%;
+    max-width: 800px;
+}
+.index-main h1 {
+    text-align: center;
+    color: #fff;
+}
+.title-box p {
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    line-height: 20px;
+}
+.sub-title-box {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;  
+}
+.sub-title-box .title {
+    display: block;
+    width: 40%;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    box-sizing: border-box;
+    padding:20px 15px;
+    text-align: center;
+    cursor: pointer;
+    opacity: .8;
+    transition: all .5s;
+}
+.sub-title-box .title:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+.sub-title-box .left {
+    background-color: rgb(243, 212, 34);
+}
+.sub-title-box .right {
+    background-color: rgb(13, 191, 223);
+}
+.sub-banner {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+.sub-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+.sub-banner .title {
+    width: 100%;
+    height: 100%; 
+    left:0;
+    top:0px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.sub-banner .title p {
+    max-width: 1200px;
+}
+
+.article-box {
+    width: 96%;
+    max-width: 1200px;
+    margin:20px auto;
+}
+.leftright-box {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+.leftright-box .context {
+    flex:1;
+    padding:20px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #f5f5f5;
+}
+.leftright-box .context ul {
+    padding-left:20px;
+    color: #666;
+}
+.leftright-box img {
+    margin:0px 20px 20px 20px;
+}
+.article-box h2 {
+    font-size: 20px;
+    color: #333;
+    line-height: 40px;
+}
+.article-box p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    line-height: 30px;
+    text-indent: 28px;
+}
+.foot-box {
+   background: #f5f5f5;
+   border-left: 3px solid #ddd;
+   box-sizing: border-box;
+   padding:20px;
+   font-size: 12px;
+
+   line-height: 20px;
+   color: #666;
+   width: 96%;
+    max-width: 1200px;
+    margin:20px auto;
+
+}
+.goback {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    right: 0;
+    bottom: 50px;
+    background: #333;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    border-radius: 10px 0 0px 10px;
+}
+.goback img {
+    height: 40px;
+}
+.goback p {
+    font-size: 12px;
+    color: #fff;
+}
+@media only screen and (max-width: 800px) {
+    .leftright-box {
+        flex-direction: column;
+    }
+}
