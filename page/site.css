@@ -23,8 +23,12 @@ body {
   background-image: url('./images/2.jfif');
   background-size: cover;
 }
+.banner-info {
+  max-height: 300px;
+  overflow-y: auto;
+}
 .container-box {
-  width: 100%;
+  width: 96%;
   max-width: 1200px;
   margin: 20px auto;
 }
@@ -51,13 +55,16 @@ body {
   flex-wrap: wrap;
 }
 .about-us .item {
-  width: 200px;
-  height: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  width: 45%;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #333;
+  margin-bottom: 10px;
   background-color: rgb(250, 234, 95);
 }
 .about-us .item p {
@@ -147,6 +154,9 @@ body {
   justify-content: center;
   align-items: stretch;
 }
+.leftright-box img {
+  max-width: 100%;
+}
 .leftright-box .context {
   flex: 1;
   padding: 20px;
@@ -177,6 +187,7 @@ body {
   background: #f5f5f5;
   border-left: 3px solid #ddd;
   box-sizing: border-box;
+  word-break: break-all;
   padding: 20px;
   font-size: 12px;
 
